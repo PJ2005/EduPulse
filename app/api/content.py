@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends, UploadFile, File, HTTPException, BackgroundTasks, Query
 from typing import Dict, List, Optional
 from app.services.content import upload_service, processing_service, organization_service, retrieval_service  # Import new services
-# Assuming authentication middleware 'get_current_user' provides user info
+from app.core.middleware import get_current_user  # Add this import
 
 router = APIRouter()
 

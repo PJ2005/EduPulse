@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException
 from typing import List, Dict
 from app.services.test import analytics_service, test_taking_service
-# Assuming authentication middleware 'get_current_user'
+from app.core.middleware import get_current_user  # Add this import
 
 router = APIRouter()
 

@@ -22,6 +22,7 @@ class Settings(BaseSettings):
     # Vertex AI Configuration
     VERTEX_AI_PROJECT: str = os.getenv("VERTEX_AI_PROJECT", "")
     VERTEX_AI_LOCATION: str = os.getenv("VERTEX_AI_LOCATION", "us-central1")
+    GOOGLE_APPLICATION_CREDENTIALS: str = os.getenv("GOOGLE_APPLICATION_CREDENTIALS", "")
     
     # Spotify API
     SPOTIPY_CLIENT_ID: str = os.getenv("SPOTIPY_CLIENT_ID", "")
@@ -42,7 +43,7 @@ class Settings(BaseSettings):
     
     class Config:
         env_file = ".env"
-        
+
 # Create global settings instance to be imported
 settings = Settings()
 

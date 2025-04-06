@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends, HTTPException, Query
 from typing import List, Dict, Optional
-from app.services.test import test_generation_service, test_taking_service, test_service
+from app.services.test import test_generation_service, test_taking_service
 from app.models.questions import Difficulty
 from app.core.middleware import get_current_user
 

@@ -3,6 +3,7 @@ from typing import List, Dict
 from app.services.scheduler import task_service
 from app.models.schedule import TaskStatus
 from datetime import date
+from app.core.middleware import get_current_user
 # Assuming authentication middleware 'get_current_user'
 
 router = APIRouter()

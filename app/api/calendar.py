@@ -3,6 +3,7 @@ from typing import List, Dict, Optional
 from app.services.scheduler import calendar_service
 from app.models.schedule import Task, Event, CalendarView
 from datetime import date
+from app.core.middleware import get_current_user
 # Assuming authentication middleware 'get_current_user'
 
 router = APIRouter()

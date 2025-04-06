@@ -2,6 +2,7 @@ from fastapi import APIRouter, Depends, HTTPException
 from typing import List, Dict, Optional
 from app.services.scheduler import ai_planning_service
 from datetime import date, timedelta
+from app.core.middleware import get_current_user
 # Assuming authentication middleware 'get_current_user'
 
 router = APIRouter()

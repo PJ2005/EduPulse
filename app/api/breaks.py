@@ -1,6 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException
 from typing import List, Dict
 from app.services.scheduler import break_service
+from app.core.middleware import get_current_user
 # Assuming authentication middleware 'get_current_user'
 
 router = APIRouter()

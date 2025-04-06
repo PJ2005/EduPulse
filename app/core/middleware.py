@@ -13,6 +13,12 @@ exempt_paths = [
     "/docs",
     "/redoc",
     "/openapi.json",
+    "/swagger-ui.css",
+    "/swagger-ui-bundle.js",
+    "/favicon-32x32.png", 
+    "/favicon-16x16.png",
+    "/swagger-ui-standalone-preset.js",
+    "/_static",
 ]
 
 async def authenticate_user(request: Request, call_next):
@@ -22,6 +28,7 @@ async def authenticate_user(request: Request, call_next):
     """
     # Skip authentication for exempt paths
     if any(request.url.path.startswith(path) for path in exempt_paths):
+        logger.debug(f"Skipping authentication for exempt path: {request.url.path}")
         return await call_next(request)
     
     # Extract token from Authorization header
@@ -34,6 +41,7 @@ async def authenticate_user(request: Request, call_next):
                 detail="Missing Authorization header",
             )
         # For other paths, proceed without authentication
+        logger.debug(f"No auth header for non-API path: {request.url.path} - proceeding")
         return await call_next(request)
     
     try:

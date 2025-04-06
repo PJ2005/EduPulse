@@ -2,6 +2,7 @@ from fastapi import APIRouter, Depends, HTTPException, Query
 from typing import List, Dict, Optional
 from app.services.notes import generation_service, management_service, customization_service
 from app.models.notes import Note, NoteVersion
+from app.core.middleware import get_current_user
 # Assuming authentication middleware 'get_current_user' provides user info
 
 router = APIRouter()

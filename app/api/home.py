@@ -1,6 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException, status, Query
 from typing import List, Dict
 from app.services.home import reminder_service, todo_service, subject_service, spotify_service
+from app.core.middleware import get_current_user
 # Assuming authentication middleware 'get_current_user' provides user info
 
 router = APIRouter()

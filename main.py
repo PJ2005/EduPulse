@@ -1,6 +1,5 @@
 from fastapi import FastAPI
 import logging
-from app.core.middleware import authenticate_user
 from app.core.config import settings
 from app.api import auth, user, websockets, test_integration
 from app.api import questions, tests, analytics, adaptive_learning
@@ -24,8 +23,16 @@ app = FastAPI(
     version="1.0.0",
 )
 
-# Add authentication middleware
-app.middleware("http")(authenticate_user)
+# Import the appropriate middleware based on environment
+if settings.ENVIRONMENT == "development" and settings.DEBUG:
+    from app.core.dev_middleware import dev_authenticate_user
+    # Add development authentication middleware
+    app.middleware("http")(dev_authenticate_user)
+    logger.warning("Using development authentication middleware - NO REAL SECURITY")
+else:
+    from app.core.middleware import authenticate_user
+    # Add production authentication middleware
+    app.middleware("http")(authenticate_user)
 
 # Initialize websocket manager
 websocket_manager = WebSocketManager()

@@ -1,6 +1,7 @@
 from app.models.content import Content
 # Assuming database client 'db' is available
 from app.services.content.file_processing import pdf_processor, image_processor, audio_processor, ppt_processor, video_processor
+from typing import Dict
 
 async def process_content(content_id: str):
     # content = await db.collection("Content").document(content_id).get()
